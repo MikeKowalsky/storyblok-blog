@@ -1,7 +1,7 @@
 {
   "name": "storyblok-blog",
   "version": "1.0.0",
-  "description": "Learning jam stack",
+  "description": "Learning",
   "author": "MikeKowalsky",
   "private": true,
   "scripts": {
