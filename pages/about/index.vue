@@ -1,5 +1,5 @@
 <template>
-  <section id="about-page">
+  <section id="about-page" v-editable="blok">
     <h1>{{ title }}</h1>
     <p>
       {{content}}
@@ -16,10 +16,29 @@ export default {
       })
       .then(res => {
         return {
+          blok: res.data.story.content,
           title: res.data.story.content.title,
           content: res.data.story.content.content
         };
       });
+  },
+  // mounted() {
+  //   //created is on ss, mounted is on the client side
+  //   this.$storyblok.init();
+  //   this.$storyblok.on("change", () => {
+  //     location.reload(true);
+  //   });
+  // }
+  mounted() {
+    this.$storybridge.on(["input", "published", "change"], event => {
+      // if (event.action == "input") {
+      //   if (event.story.id === this.story.id) {
+      //     this.story.content = event.story.content;
+      //   }
+      // } else {
+      window.location.reload();
+      // }
+    });
   }
 };
 </script>
