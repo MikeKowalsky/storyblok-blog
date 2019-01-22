@@ -13,7 +13,8 @@ export default {
   asyncData(context) {
     return context.app.$storyapi
       .get(`cdn/stories/blog/${context.params.postId}`, {
-        version: "draft"
+        //to ways of checking development mode - context (if avaiable) or process.env
+        version: process.env.NODE_ENV == "production" ? "published" : "draft"
       })
       .then(res => {
         return {
@@ -25,7 +26,7 @@ export default {
       });
   },
   mounted() {
-    this.$storybridge.on(["change"], event => {
+    this.$storybridge.on(["input", "published", "change"], event => {
       window.location.reload();
     });
   }

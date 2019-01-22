@@ -20,6 +20,7 @@ export default {
   asyncData(context) {
     return context.app.$storyapi
       .get("cdn/stories", {
+        //to ways of checking development mode - context (if avaiable) or process.env
         version: context.isDev ? "draft" : "published",
         starts_with: "blog/"
       })
@@ -37,26 +38,6 @@ export default {
         };
       });
   }
-  // data() {
-  //   return {
-  //     posts: [
-  //       {
-  //         title: "Test post",
-  //         previewText: "This will be cool, wait for it",
-  //         thumbnailUrl:
-  //           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIY5J78PoCCQcZzDFT4BQL5TWxnqaCXlvSANz2x_fKh-Jh3HkvVg",
-  //         id: "test-post "
-  //       },
-  //       {
-  //         title: "Test second",
-  //         previewText: "This will be cool, wait for it",
-  //         thumbnailUrl:
-  //           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIY5J78PoCCQcZzDFT4BQL5TWxnqaCXlvSANz2x_fKh-Jh3HkvVg",
-  //         id: "test-second"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 
@@ -69,7 +50,7 @@ export default {
   flex-direction: column;
 }
 
-@media (min-width: 35rem) {
+@media (min-width: 45rem) {
   #posts {
     flex-direction: row;
   }
